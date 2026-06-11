@@ -8,11 +8,25 @@ products:
 - windows-wdk
 ---
 
-# FUSB302 USB Type-C Port Controller Driver (Based on UcmTcpciCx)
+# FUSB302 USB Type-C Port Controller Driver for Windows
 
-This project is a hardware-specific implementation of a Windows USB Type-C Connector Manager client driver, adapted from the Windows Driver Kit (WDK) **UcmTcpciCxSample**. 
+This project contains a native KMDF hardware driver foundation for the
+Fairchild/ON Semiconductor FUSB302 USB Type-C controller.
 
-It replaces the simulated layer with real-world hardware integration for the **Fairchild/ON Semi FUSB302** Type-C Controller. It implements a software TCPM (Type-C Port Manager) state machine within the KMDF driver to handle CC line detection, USB PD (Power Delivery) negotiation, and power role swapping under Windows.
+The `Fusb302.cpp` module uses Windows Resource Hub and SPB APIs to communicate
+with the controller over I2C. It initializes the chip, handles its GPIO
+interrupt through a KMDF interrupt work item, starts DRP toggling, detects
+orientation/attach state, and exposes the basic USB PD transmit and hard-reset
+operations.
+
+The Linux `fusb302.c` file is reference material only and is not part of the
+Windows build.
+
+> FUSB302 is not a TCPCI or UCSI device. A complete Windows connector-manager
+> implementation also needs a software TCPM/policy engine that consumes the
+> hardware events and reports connector state through UcmCx. The current code
+> deliberately does not claim that the original firmware-UCSI sample backend
+> can perform that role.
 
 ## Hardware Topology & Resources (Rockchip Platform)
 

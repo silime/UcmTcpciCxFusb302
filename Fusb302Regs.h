@@ -1,0 +1,111 @@
+#pragma once
+
+#define FUSB302_BIT(_Bit) (1u << (_Bit))
+
+#define FUSB_REG_DEVICE_ID                 0x01
+#define FUSB_REG_SWITCHES0                 0x02
+#define FUSB_REG_SWITCHES0_CC2_PU_EN       FUSB302_BIT(7)
+#define FUSB_REG_SWITCHES0_CC1_PU_EN       FUSB302_BIT(6)
+#define FUSB_REG_SWITCHES0_VCONN_CC2       FUSB302_BIT(5)
+#define FUSB_REG_SWITCHES0_VCONN_CC1       FUSB302_BIT(4)
+#define FUSB_REG_SWITCHES0_MEAS_CC2        FUSB302_BIT(3)
+#define FUSB_REG_SWITCHES0_MEAS_CC1        FUSB302_BIT(2)
+#define FUSB_REG_SWITCHES0_CC2_PD_EN       FUSB302_BIT(1)
+#define FUSB_REG_SWITCHES0_CC1_PD_EN       FUSB302_BIT(0)
+
+#define FUSB_REG_SWITCHES1                 0x03
+#define FUSB_REG_SWITCHES1_POWERROLE       FUSB302_BIT(7)
+#define FUSB_REG_SWITCHES1_DATAROLE        FUSB302_BIT(4)
+#define FUSB_REG_SWITCHES1_AUTO_GCRC       FUSB302_BIT(2)
+#define FUSB_REG_SWITCHES1_TXCC2_EN        FUSB302_BIT(1)
+#define FUSB_REG_SWITCHES1_TXCC1_EN        FUSB302_BIT(0)
+
+#define FUSB_REG_MEASURE                   0x04
+
+#define FUSB_REG_CONTROL0                  0x06
+#define FUSB_REG_CONTROL0_TX_FLUSH         FUSB302_BIT(6)
+#define FUSB_REG_CONTROL0_INT_MASK         FUSB302_BIT(5)
+#define FUSB_REG_CONTROL0_HOST_CUR_MASK    0x0C
+#define FUSB_REG_CONTROL0_HOST_CUR_DEF     0x04
+
+#define FUSB_REG_CONTROL1                  0x07
+#define FUSB_REG_CONTROL1_RX_FLUSH         FUSB302_BIT(2)
+
+#define FUSB_REG_CONTROL2                  0x08
+#define FUSB_REG_CONTROL2_MODE_MASK        0x06
+#define FUSB_REG_CONTROL2_MODE_DFP         0x06
+#define FUSB_REG_CONTROL2_MODE_UFP         0x04
+#define FUSB_REG_CONTROL2_MODE_DRP         0x02
+#define FUSB_REG_CONTROL2_MODE_NONE        0x00
+#define FUSB_REG_CONTROL2_TOGGLE           FUSB302_BIT(0)
+
+#define FUSB_REG_CONTROL3                  0x09
+#define FUSB_REG_CONTROL3_SEND_HARDRESET   FUSB302_BIT(6)
+#define FUSB_REG_CONTROL3_N_RETRIES_MASK   0x06
+#define FUSB_REG_CONTROL3_N_RETRIES_3      0x06
+#define FUSB_REG_CONTROL3_AUTO_RETRY       FUSB302_BIT(0)
+
+#define FUSB_REG_MASK                      0x0A
+#define FUSB_REG_MASK_VBUSOK               FUSB302_BIT(7)
+#define FUSB_REG_MASK_COMP_CHNG            FUSB302_BIT(5)
+#define FUSB_REG_MASK_COLLISION            FUSB302_BIT(1)
+#define FUSB_REG_MASK_BC_LVL               FUSB302_BIT(0)
+
+#define FUSB_REG_POWER                     0x0B
+#define FUSB_REG_POWER_PWR_LOW             0x01
+#define FUSB_REG_POWER_PWR_ALL             0x0F
+
+#define FUSB_REG_RESET                     0x0C
+#define FUSB_REG_RESET_PD_RESET            FUSB302_BIT(1)
+#define FUSB_REG_RESET_SW_RESET            FUSB302_BIT(0)
+
+#define FUSB_REG_MASKA                     0x0E
+#define FUSB_REG_MASKA_TOGDONE             FUSB302_BIT(6)
+#define FUSB_REG_MASKA_RETRYFAIL           FUSB302_BIT(4)
+#define FUSB_REG_MASKA_HARDSENT            FUSB302_BIT(3)
+#define FUSB_REG_MASKA_TX_SUCCESS          FUSB302_BIT(2)
+#define FUSB_REG_MASKA_HARDRESET           FUSB302_BIT(0)
+
+#define FUSB_REG_MASKB                     0x0F
+#define FUSB_REG_MASKB_GCRCSENT            FUSB302_BIT(0)
+
+#define FUSB_REG_STATUS1A                  0x3D
+#define FUSB_REG_STATUS1A_TOGSS_POS        3
+#define FUSB_REG_STATUS1A_TOGSS_MASK       0x07
+#define FUSB_REG_STATUS1A_TOGSS_SRC1       0x01
+#define FUSB_REG_STATUS1A_TOGSS_SRC2       0x02
+#define FUSB_REG_STATUS1A_TOGSS_SNK1       0x05
+#define FUSB_REG_STATUS1A_TOGSS_SNK2       0x06
+
+#define FUSB_REG_INTERRUPTA                0x3E
+#define FUSB_REG_INTERRUPTA_TOGDONE        FUSB302_BIT(6)
+#define FUSB_REG_INTERRUPTA_RETRYFAIL      FUSB302_BIT(4)
+#define FUSB_REG_INTERRUPTA_HARDSENT       FUSB302_BIT(3)
+#define FUSB_REG_INTERRUPTA_TX_SUCCESS     FUSB302_BIT(2)
+#define FUSB_REG_INTERRUPTA_HARDRESET      FUSB302_BIT(0)
+
+#define FUSB_REG_INTERRUPTB                0x3F
+#define FUSB_REG_INTERRUPTB_GCRCSENT       FUSB302_BIT(0)
+
+#define FUSB_REG_STATUS0                   0x40
+#define FUSB_REG_STATUS0_VBUSOK            FUSB302_BIT(7)
+#define FUSB_REG_STATUS0_COMP              FUSB302_BIT(5)
+#define FUSB_REG_STATUS0_BC_LVL_MASK       0x03
+
+#define FUSB_REG_STATUS1                   0x41
+#define FUSB_REG_STATUS1_RX_EMPTY          FUSB302_BIT(5)
+
+#define FUSB_REG_INTERRUPT                 0x42
+#define FUSB_REG_INTERRUPT_VBUSOK          FUSB302_BIT(7)
+#define FUSB_REG_INTERRUPT_COMP_CHNG       FUSB302_BIT(5)
+#define FUSB_REG_INTERRUPT_COLLISION       FUSB302_BIT(1)
+#define FUSB_REG_INTERRUPT_BC_LVL          FUSB302_BIT(0)
+#define FUSB_REG_FIFOS                     0x43
+
+#define FUSB302_TKN_TXON                   0xA1
+#define FUSB302_TKN_SYNC1                  0x12
+#define FUSB302_TKN_SYNC2                  0x13
+#define FUSB302_TKN_PACKSYM                0x80
+#define FUSB302_TKN_JAMCRC                 0xFF
+#define FUSB302_TKN_EOP                    0x14
+#define FUSB302_TKN_TXOFF                  0xFE

@@ -33,6 +33,9 @@
     <ClCompile Include="Fdo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fusb302.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Ppm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fdo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fusb302.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fusb302Regs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ppm.h">

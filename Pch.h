@@ -26,6 +26,9 @@ Environment:
 #include <ntstrsafe.h>
 #include <acpiioct.h>
 #include <acpitabl.h>
+#define RESHUB_USE_HELPER_ROUTINES
+#include <reshub.h>
+#include <spb.h>
 
 #include <UcmCx.h>
 #include <UcsiInterface.h>
@@ -33,6 +36,7 @@ Environment:
 
 #include "Trace.h"
 #include "Driver.h"
+#include "Fusb302.h"
 #include "Acpi.h"
 #include "UcmCallbacks.h"
 #include "Ppm.h"
